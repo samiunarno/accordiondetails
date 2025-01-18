@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .accordion-container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .column {
+      flex: 1;
+      max-width: 48%;
+    }
+
+    .accordion {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .accordion-header {
+      background-color: #f9f9f9;
+      color: #333;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 15px;
+      text-align: left;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background-color: #f1f1f1;
+    }
+
+    .accordion-header span.toggle-icon {
+      font-size: 1.5rem;
+      color: #000000;
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-content {
+      padding: 15px;
+      background-color: #fff;
+      display: none;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .accordion-content p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .accordion-content.open {
+      display: block;
+    }
+
+    .accordion-header.open .toggle-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+  <!-- Add FontAwesome CDN link -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <script>
+    function toggleAccordion(index) {
+      const content = document.getElementById(`section${index + 1}`);
+      const header = document.querySelectorAll('.accordion-header')[ index ];
+      const icon = header.querySelector('.toggle-icon');
+
+      content.classList.toggle('open');
+
+      if (content.classList.contains('open')) {
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      } else {
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion with Card Style</title>
+</head>
+
+<body>
+
+  <div class="accordion-container">
+    <div class="column">
+      <div class="accordion">
+        <button class="accordion-header" onclick="toggleAccordion(0)">
+          The Abraham Accords <span class="toggle-icon fas fa-chevron-down"></span>
+        </button>
+        <div class="accordion-content" id="section1">
+          <p>On September 15, 2020, the leaders of the UAE and Israel signed the historic accords at the White House,
+            fully normalizing relations between the two countries.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header" onclick="toggleAccordion(1)">
+          Regions Most Advanced <span class="toggle-icon fas fa-chevron-down"></span>
+        </button>
+        <div class="accordion-content" id="section2">
+          <p>The UAE is a leading trade, transport, and financial hub in the Middle East, while Israel, known as the
+            "Start-Up Nation," excels in technology and innovation with the highest per capita startups, R&D spending,
+            and tech unicorns.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="accordion">
+        <button class="accordion-header" onclick="toggleAccordion(2)">
+          A Shared Vision <span class="toggle-icon fas fa-chevron-down"></span>
+        </button>
+        <div class="accordion-content" id="section3">
+          <p>The UAE and Israel are open, dynamic, and multi-cultural societies, which promote religious tolerance,
+            celebrate innovation, and seek to better the lives of their citizens.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header" onclick="toggleAccordion(3)">
+          Young Nations, Remarkable <span class="toggle-icon fas fa-chevron-down"></span>
+        </button>
+        <div class="accordion-content" id="section4">
+          <p>The UAE was established in 1971 and Israel in 1948, yet in the short time since their independence, they
+            have
+            developed into the most socially, economically and educationally advanced nations in the region.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
