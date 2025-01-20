@@ -10,13 +10,15 @@
       box-sizing: border-box;
     }
 
+    html,
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f5f5;
+      background-color: transparent;
+      height: 100%;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
     }
 
     .accordion-container {
@@ -34,18 +36,17 @@
     }
 
     .accordion {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      border-radius: 5px;
       overflow: hidden;
       margin-bottom: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid #000000;
     }
 
     .accordion-header {
       background-color: #f9f9f9;
       color: #333;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       padding: 15px;
       text-align: left;
@@ -71,19 +72,17 @@
     }
 
     .accordion-content {
-      padding: 15px;
+      padding: 0 15px;
       background-color: #fff;
-      display: none;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-    }
-
-    .accordion-content p {
-      font-size: 18px;
-      color: #555;
+      display: block;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease-out, padding 0.5s ease-out;
     }
 
     .accordion-content.open {
-      display: block;
+      max-height: 400px;
+      padding: 15px;
     }
 
     .accordion-header.open .toggle-icon {
@@ -91,7 +90,7 @@
     }
   </style>
   <!-- Add FontAwesome CDN link -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <script>
     function toggleAccordion(index) {
       const content = document.getElementById(`section${index + 1}`);
@@ -101,41 +100,53 @@
       content.classList.toggle('open');
 
       if (content.classList.contains('open')) {
-        icon.classList.remove('fa-chevron-down');
-        icon.classList.add('fa-chevron-up');
+        icon.classList.remove('fa-caret-down');
+        icon.classList.add('fa-caret-up');
       } else {
-        icon.classList.remove('fa-chevron-up');
-        icon.classList.add('fa-chevron-down');
+        icon.classList.remove('fa-caret-up');
+        icon.classList.add('fa-caret-down');
       }
     }
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accordion with Card Style</title>
+  <title>Accordion with Caret</title>
 </head>
 
 <body>
-
   <div class="accordion-container">
     <div class="column">
       <div class="accordion">
         <button class="accordion-header" onclick="toggleAccordion(0)">
-          The Abraham Accords <span class="toggle-icon fas fa-chevron-down"></span>
+          Kök <span class="toggle-icon fa-solid fa-caret-down"></span>
         </button>
         <div class="accordion-content" id="section1">
-          <p>On September 15, 2020, the leaders of the UAE and Israel signed the historic accords at the White House,
-            fully normalizing relations between the two countries.</p>
+          <p>Utvändig avtorkning av köksluckor och skåp.<br>
+            Rengöring av kakel och diskbänk samt putsning av diskhon.<br>
+            Utvändig avtorkning av kyl och frys.<br>
+            Utvändig avtorkning av ugn och mikro.<br>
+            Avtorkning av fläkten.<br>
+            Soptunnan töms och avtorkning av sopskåpet.<br>
+            Avtorkning av fria ytor så som bänkar, hyllor, bord och fönsterbrädor.<br>
+            Dammtorkning av lister och eluttag.<br>
+            Putsning av speglar och glaspartier (observera att detta inte inkluderar fönster).<br>
+            Dammsugning av golv samt eventuell matta.<br>
+            Moppning av golvet.</p>
         </div>
       </div>
 
       <div class="accordion">
         <button class="accordion-header" onclick="toggleAccordion(1)">
-          Regions Most Advanced <span class="toggle-icon fas fa-chevron-down"></span>
+          Badrum <span class="toggle-icon fa-solid fa-caret-down"></span>
         </button>
         <div class="accordion-content" id="section2">
-          <p>The UAE is a leading trade, transport, and financial hub in the Middle East, while Israel, known as the
-            "Start-Up Nation," excels in technology and innovation with the highest per capita startups, R&D spending,
-            and tech unicorns.</p>
+          <p>Avtorkning av badrumsskåp och luckor (utvändigt).<br>
+            Utvändig avtorkning av tvättmaskin och torktumlare.<br>
+            Eventuella fläckar på kaklet tvättas bort.<br>
+            Putsning av speglar och glaspartier (inte putsning av fönster).<br>
+            Avtorkning av kakel ovanför handfatet.<br>
+            Rengöring av dusch och handfat.<br>
+            Rengöring av toalett.</p>
         </div>
       </div>
     </div>
@@ -143,27 +154,35 @@
     <div class="column">
       <div class="accordion">
         <button class="accordion-header" onclick="toggleAccordion(2)">
-          A Shared Vision <span class="toggle-icon fas fa-chevron-down"></span>
+          Viktig information om din hemstädning <span class="toggle-icon fa-solid fa-caret-down"></span>
         </button>
         <div class="accordion-content" id="section3">
-          <p>The UAE and Israel are open, dynamic, and multi-cultural societies, which promote religious tolerance,
-            celebrate innovation, and seek to better the lives of their citizens.</p>
+          <p>Städmedel/material som du behöver ha hemma:<br>
+            - Allrengöring (vi rekommenderar Grumme såpa citron).<br>
+            - Kök-/badrumsrengöring för kalkborttagning.<br>
+            - Fönsterputsmedel.<br>
+            - Mikrofiberdukar, minst 6 stycken, tvättade i 60 grader.<br>
+            - Dammsugare och mopp.<br>
+          </p>
         </div>
       </div>
 
       <div class="accordion">
         <button class="accordion-header" onclick="toggleAccordion(3)">
-          Young Nations, Remarkable <span class="toggle-icon fas fa-chevron-down"></span>
+          Annan bra information om hemstädning <span class="toggle-icon fa-solid fa-caret-down"></span>
         </button>
         <div class="accordion-content" id="section4">
-          <p>The UAE was established in 1971 and Israel in 1948, yet in the short time since their independence, they
-            have
-            developed into the most socially, economically and educationally advanced nations in the region.</p>
+          <p>Priset är baserat på normal nedsmutsning.<br>
+            Vi kan hjälpa till med klädvikning och disk, men kontakta oss för extra tid.<br>
+            Om du är hemma under städningen, vänligen låt vår personal arbeta ostört.<br>
+            Alla hemstädningar sker utan bindningstid.<br>
+            Avbokning sker senast 48 timmar innan bokad tid.<br>
+            Fakturan skickas efter genomförd städning med 10 dagars betalningsvillkor.<br>
+          </p>
         </div>
       </div>
     </div>
   </div>
-
 </body>
 
 </html>
