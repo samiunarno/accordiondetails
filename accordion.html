@@ -73,8 +73,6 @@
 
     .accordion-content {
       padding: 0 15px;
-      background-color: #fff;
-      display: block;
       overflow: hidden;
       max-height: 0;
       transition: max-height 0.5s ease-out, padding 0.5s ease-out;
@@ -98,6 +96,11 @@
       .column {
         max-width: 100%;
       }
+
+      .accordion-content.open {
+        max-height: 100%;
+        /* Allow content to fully expand on mobile */
+      }
     }
   </style>
 
@@ -106,19 +109,24 @@
 
   <script>
     function toggleAccordion(index) {
-      const content = document.getElementById(`section${index + 1}`);
-      const header = document.querySelectorAll('.accordion-header')[ index ];
-      const icon = header.querySelector('.toggle-icon');
+      const contents = document.querySelectorAll('.accordion-content');
+      const headers = document.querySelectorAll('.accordion-header');
 
-      content.classList.toggle('open');
+      contents.forEach((content, i) => {
+        const icon = headers[ i ].querySelector('.toggle-icon');
 
-      if (content.classList.contains('open')) {
-        icon.classList.remove('fa-caret-down');
-        icon.classList.add('fa-caret-up');
-      } else {
-        icon.classList.remove('fa-caret-up');
-        icon.classList.add('fa-caret-down');
-      }
+        if (i === index) {
+          // Toggle the selected accordion
+          content.classList.toggle('open');
+          icon.classList.toggle('fa-caret-up', content.classList.contains('open'));
+          icon.classList.toggle('fa-caret-down', !content.classList.contains('open'));
+        } else {
+          // Close others
+          content.classList.remove('open');
+          icon.classList.add('fa-caret-down');
+          icon.classList.remove('fa-caret-up');
+        }
+      });
     }
   </script>
 
